@@ -19,13 +19,13 @@ class PhotoGalleryView(DetailView):
     model = PhotoGallery
 
 
-class IndexView():
+class PhotoGalleryCreateView():
     pass
 
 
-class IndexView():
+class PhotoGalleryUpdateView():
     pass
 
 
-class IndexView():
+class PhotoGalleryDeleteView():
     pass

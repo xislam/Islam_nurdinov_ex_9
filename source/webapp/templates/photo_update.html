@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Update Photo{% endblock %}
+{% block menu %}
+    <li><a href="{% url 'webapp:photo_gallery_view' obj.pk %}">View</a></li>
+{% endblock %}
+{% block content %}
+    <h1>Update Photo</h1>
+    <form method="POST" action="{% url 'webapp:photo_gallery_update' obj.pk %}" enctype="multipart/form-data">
+        {% include 'partial/foto_form.html' %}
+    <input type="submit" value="Создать" class="btn btn-primary">
+    </form>
+{% endblock %}

@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block menu %}
+ <li><a href="{% url 'webapp:photo_gallery_update'  photo.pk %}">Edit</a></li>
+<li><a href="{% url 'webapp:photo_gallery_delete'  photo.pk %}">Delete</a></li>
+{% endblock %}
+{% block content %}
+   <div class="container">
+       <img class="photo" src="{{ photo.image.url }}" width="500" height="500" alt="user picture">
+        <div>Подпись: {{ photo.description }}</div>
+        <div>Дата создание: {{ photo.creation_date }}</div>
+        <!--<div>Избранный: {{ photo. }}</div>-->
+        <div>Автор : {{ photo.author_name }}</div>
+       <!--<button id="{{photo.id}}" onclick="like(1)">Добавить в избранное</button>-->
+        <hr/>
+        <hr/>
 
-</body>
-</html>
+   </div>
+{% endblock %}

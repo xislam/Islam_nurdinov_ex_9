@@ -4,11 +4,12 @@ from audioop import reverse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView
 
+from webapp.forms import PhotoGalleryForm
 from webapp.models import PhotoGallery
 
 
 class IndexView(ListView):
-    template_name = ''
+    template_name = 'index.html'
     context_object_name = 'photos'
     model = PhotoGallery
     ordering = '-creation_date'
@@ -21,13 +22,9 @@ class PhotoGalleryView(DetailView):
 
 
 class PhotoGalleryCreateView(CreateView):
-    template_name = 'photo_create.html'
+    template_name = 'photo_c.html'
     model = PhotoGallery
-    fields = ['image', 'description']
-
-    def valid(self, form):
-        form.instance.author_name = self.request.user
-        return super().form_valid(form)
+    form_class = PhotoGalleryForm
 
     def get_success_url(self):
         return reverse('webapp:index')
@@ -39,7 +36,7 @@ class PhotoGalleryUpdateView(UpdateView):
     fields = ['image', 'description', 'author_name']
     context_object_name = 'obj'
 
-    def get(self):
+    def get_success_url(self):
         return reverse('webapp:index')
 
 

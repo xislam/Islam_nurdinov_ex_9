@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block menu %}
+ <li><a href="{% url 'webapp:photo_gallery_create' %}">Add photo</a></li>
 {% endblock %}
 {% block content %}
     <h1>Photos:</h1>
@@ -13,5 +14,7 @@
             <!--<div>Избронны: {{ photo. }}</div>-->
             <a href="{% url 'webapp:photo_gallery_view' photo.pk %}">More...</a>
             <hr/>
+ <li><a href="{% url 'webapp:photo_gallery_update'  photo.pk %}">Edit</a></li>
+<li><a href="{% url 'webapp:photo_gallery_delete'  photo.pk %}">Delete</a></li>
         {% endfor %}
 {% endblock %}
